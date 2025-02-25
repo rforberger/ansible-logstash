@@ -1,0 +1,30 @@
+---
+
+- name: Create logstash data directories
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: 1000
+    group: 1000
+  loop:
+    - { path: "/data/docker/logstash" }
+    - { path: "/data/docker/logstash/pipeline" }
+    - { path: "/data/docker/logstash/template" }
+
+- name: Create Logstash pipeline
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "/data/docker/logstash/{{ item.dest }}"
+    owner: 1000
+    group: 1000
+  loop:
+    - { src: "pipeline.yml.j2", dest: "pipeline/pipeline.yml"}
+    - { src: "template.json.j2", dest: "template/template.json" }
+  notify:
+    - restart logstash
+
+
+
+
+
+

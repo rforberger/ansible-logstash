@@ -1,0 +1,7 @@
+---
+
+- name: restart logstash
+  ansible.builtin.shell:
+    cmd: "dockerctl.py stop logstash && dockerctl.py start logstash"
+
+

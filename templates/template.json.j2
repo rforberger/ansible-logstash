@@ -1,0 +1,41 @@
+{
+  "index_patterns": ["{{ logstash.index_pattern }}"],
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "sshd_client_ip": {
+        "type": "text"
+      }
+      "user.logmessage": {
+        "type": "text"
+      }
+      "cron.action": {
+        "type": "text"
+      }
+      "cron.logsource": {
+        "type": "text"
+      }
+      "cron.message": {
+        "type": "text"
+      }
+      "cron.pid": {
+        "type": "integer"
+      }
+      "cron.program": {
+        "type": "text"
+      }
+      "cron.user": {
+        "type": "text"
+      }
+      "kern.numbers": {
+        "type": "text"
+      }
+      "kern.logmessage": {
+        "type": "text"
+      }
+    }
+  }
+}
